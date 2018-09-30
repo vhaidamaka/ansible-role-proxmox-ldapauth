@@ -1,13 +1,18 @@
 galaxy_info:
   author: "Vadym Haidamaka"
   description: "LDAP-authentication for Proxmox VE"
-  license: "license MIT"
+  license: "MIT"
   min_ansible_version: 2.0
+  role_name: "proxmox-ldapauth"
   platforms:
-  - name: proxmox
-    versions:
-    - 4
-    - 5
+    - name: proxmox
+      versions:
+        - 4
+        - 5
+    - name: debian
+      versions:
+        - jessie
+        - stretch
   galaxy_tags:
     - authentication
     - proxmox
