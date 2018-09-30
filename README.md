@@ -1,4 +1,4 @@
-Ansible Role: proxmox-ldapauth
+Ansible Role: proxmox_ldapauth
 =========
 
 Adds LDAP-authentication for Proxmox VE.
@@ -60,7 +60,7 @@ Example Playbook
       vars_files:
         - vars/proxmox-servers.yml
       roles:
-         - { role: vhaidamaka.proxmox-ldapauth }
+         - { role: vhaidamaka.proxmox_ldapauth }
 
 Inside `vars/proxmox-servers.yml` rewrite default role variables.
 

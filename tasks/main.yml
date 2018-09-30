@@ -1,5 +1,5 @@
 ---
-# tasks file for proxmox-ldapauth
+# tasks file for proxmox_ldapauth
 - name: Create a necessary dir.
   file:
     path: /etc/pve/priv/ldap

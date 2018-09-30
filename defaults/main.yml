@@ -1,5 +1,5 @@
 ---
-# defaults file for proxmox-ldapauth
+# defaults file for proxmox_ldapauth
 ldap_server1: "ldap1.example.com"
 ldap_server2: "ldap2.example.com"
 ldap_port: "636"
