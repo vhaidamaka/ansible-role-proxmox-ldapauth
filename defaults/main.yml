@@ -1,0 +1,11 @@
+---
+# defaults file for proxmox-ldapauth
+ldap_server1: "ldap1.example.com"
+ldap_server2: "ldap2.example.com"
+ldap_port: "636"
+ldap_secure: "1"
+ldap_base_dn: "ou=people,dc=example,dc=com"
+ldap_user_attr: "uid"
+ldap_bind_dn: "cn=bind,dc=example,dc=com"
+ldap_bind_pass: "password"
+default_auth: "1"

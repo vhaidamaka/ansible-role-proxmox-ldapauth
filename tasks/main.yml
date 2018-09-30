@@ -1,0 +1,41 @@
+---
+# tasks file for proxmox-ldapauth
+- name: Create a necessary dir.
+  file:
+    path: /etc/pve/priv/ldap
+    mode: 0700
+    owner: root
+    group: www-data
+    state: directory
+
+# This step is necessary due to rectricsions of the /etc/pve filesystem
+# See: https://pve.proxmox.com/wiki/Proxmox_Cluster_File_System_(pmxcfs)#_posix_compatibility
+- name: Create necessary configuration files.
+  file:
+    path: "{{ item.path }}"
+    mode: "{{ item.mode }}"
+    state: touch
+  with_items:
+    - { path: '/etc/pve/domains.cfg', mode: '0640' }
+    - { path: '/etc/pve/priv/ldap/ldap.pw', mode: '0600' }
+
+- name: Add LDAP configuration file.
+  blockinfile:
+    path: /etc/pve/domains.cfg
+    block: |
+      ldap: ldap
+              comment LDAP authentication
+              base_dn {{ ldap_base_dn }}
+              server1 {{ ldap_server1 }}
+              server2 {{ ldap_server2 }}
+              user_attr {{ ldap_user_attr }}
+              bind_dn {{ ldap_bind_dn }}
+              default {{ default_auth }}
+              port {{ ldap_port }}
+              secure {{ ldap_secure }}
+
+- name: Add LDAP bind_dn password.
+  lineinfile:
+    path: /etc/pve/priv/ldap/ldap.pw
+    line: "{{ ldap_bind_pass }}"
+    state: present
